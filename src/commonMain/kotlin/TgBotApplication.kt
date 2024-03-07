@@ -6,7 +6,7 @@ import eu.vendeli.tgbot.utils.defineActivities
 import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking {
-    val bot = TelegramBot("1068624841:AAHo_b78tOPAntyVkXK_I-0LKQwH_WFTkec") {
+    val bot = TelegramBot("BOT_TOKEN") {
         updatesListener { pullingDelay = 1 }
     }
 
