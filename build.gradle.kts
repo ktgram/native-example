@@ -1,34 +1,40 @@
-val jvmTargetVersion = JavaVersion.VERSION_11
+import org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget
 
 plugins {
-    application
-    alias(libs.plugins.kotlin.jvm)
+    alias(libs.plugins.kotlin.multiplatform)
     alias(libs.plugins.ksp)
 }
 
 group = "com.example.blank"
 version = "0.0.1"
-application {
-    mainClass.set("com.example.blank.TgBotApplicationKt")
+
+kotlin {
+    linuxX64 { binaries.executable() }
+    mingwX64 { binaries.executable() }
+
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation(libs.tg.bot)
+            }
+        }
+        val linuxX64Main by getting
+        val mingwX64Main by getting
+    }
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    implementation(libs.tg.bot)
-    ksp(libs.tg.ksp)
+    add("kspCommonMainMetadata", libs.tg.ksp)
+    add("kspLinuxX64", libs.tg.ksp)
 }
 
-tasks {
-    compileJava {
-        targetCompatibility = jvmTargetVersion.majorVersion
-    }
-    compileKotlin {
-        kotlinOptions {
-            jvmTarget = jvmTargetVersion.majorVersion
-            javaParameters = true
-        }
+kotlin.targets.withType<KotlinNativeTarget> {
+    binaries.all {
+        freeCompilerArgs += "-Xdisable-phases=EscapeAnalysis"
     }
 }
