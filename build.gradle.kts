@@ -31,6 +31,7 @@ repositories {
 dependencies {
     add("kspCommonMainMetadata", libs.tg.ksp)
     add("kspLinuxX64", libs.tg.ksp)
+    add("kspMingwX64", libs.tg.ksp)
 }
 
 kotlin.targets.withType<KotlinNativeTarget> {
