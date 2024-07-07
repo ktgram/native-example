@@ -8,13 +8,6 @@ on:
   pull_request:
     branches:
     - master
-    - conversation
-    - echo
-    - exception-handling
-    - poll
-    - heroku
-    - ktor-webhook
-    - spring-bot
   workflow_dispatch:
 
 jobs:
