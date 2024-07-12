@@ -21,6 +21,11 @@ jobs:
           distribution: 'zulu'
           java-version: 17
 
+      - name: Install curl and curl-dev
+        run: |
+          sudo apt-get install -y curl
+          sudo apt-get install -y libcurl4-gnutls-dev
+
       - name: Build with Gradle
         uses: eskatos/gradle-command-action@v3
         with:
