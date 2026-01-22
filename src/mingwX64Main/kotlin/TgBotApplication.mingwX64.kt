@@ -1,7 +1,9 @@
 import eu.vendeli.tgbot.TelegramBot
-import eu.vendeli.tgbot.generated.__ACTIVITIES
-import eu.vendeli.tgbot.utils.common.defineActivities
+import eu.vendeli.tgbot.annotations.internal.KtGramInternal
+import eu.vendeli.tgbot.generated.KtGramCtxLoader
+import eu.vendeli.tgbot.utils.common.loadContext
 
-actual fun TelegramBot.prepareActivities() {
-    defineActivities(__ACTIVITIES)
+@OptIn(KtGramInternal::class)
+actual fun TelegramBot.setup() {
+    loadContext(KtGramCtxLoader())
 }

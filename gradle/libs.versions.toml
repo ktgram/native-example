@@ -1,12 +1,11 @@
 [versions]
-tg-bot = "8.4.1"
+tg-bot = "9.1.0"
 ksp = "2.3.4"
 
 kotlin = "2.3.0"
 
 [libraries]
 tg-bot = { module = "eu.vendeli:telegram-bot", version.ref = "tg-bot" }
-tg-ksp = { module = "eu.vendeli:ksp", version.ref = "tg-bot" }
 
 [plugins]
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }

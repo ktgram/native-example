@@ -8,7 +8,7 @@ fun main() = runBlocking {
         updatesListener { pullingDelay = 1 }
     }
 
-    bot.prepareActivities()
+    bot.setup()
     bot.addInstances {
         put(StartController::class, StartController())
     }
@@ -16,4 +16,4 @@ fun main() = runBlocking {
     bot.handleUpdates()
 }
 
-expect fun TelegramBot.prepareActivities()
+expect fun TelegramBot.setup()

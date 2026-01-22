@@ -13,23 +13,14 @@ kotlin {
     mingwX64 { binaries.executable() }
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                implementation(libs.tg.bot)
-            }
+        commonMain.dependencies {
+            implementation(libs.tg.bot)
         }
-        val linuxX64Main by getting
-        val mingwX64Main by getting
     }
 }
 
 repositories {
     mavenCentral()
-}
-
-dependencies {
-    add("kspLinuxX64", libs.tg.ksp)
-    add("kspMingwX64", libs.tg.ksp)
 }
 
 kotlin.targets.withType<KotlinNativeTarget> {
