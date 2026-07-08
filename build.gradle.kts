@@ -19,6 +19,12 @@ kotlin {
     }
 }
 
+dependencies {
+    arrayOf("kspLinuxX64", "kspMingwX64").forEach {
+        add(it, libs.tg.bot.ktnip)
+    }
+}
+
 repositories {
     mavenCentral()
 }
